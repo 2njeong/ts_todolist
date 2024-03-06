@@ -1,1 +1,10 @@
-{}
+{
+  "todolist": [
+    {
+      "id": 0,
+      "title": "운동하기",
+      "content": "몸짱이 될테야",
+      "isDone": false
+    }
+  ]
+}
