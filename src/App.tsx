@@ -5,6 +5,7 @@ import { ReactNode, Suspense, useEffect } from "react";
 import { getTodolist } from "./reduxStore/modules/todolistSlice";
 import { useAppDispatch } from "./reduxHooks";
 import MakeTodo from "./components/MakeTodo";
+import styled from "styled-components";
 
 function App(): ReactNode {
   const dispatch = useAppDispatch();
@@ -19,12 +20,22 @@ function App(): ReactNode {
   return (
     <>
       <Suspense fallback={<div>로딩중..</div>}>
+        <h1>ㅇㅈ이의 할 일</h1>
         <MakeTodo />
-        <Working />
-        <Done />
+        <ListDiv>
+          <Working />
+          <Done />
+        </ListDiv>
       </Suspense>
     </>
   );
 }
 
 export default App;
+
+const ListDiv = styled.div`
+  background-color: #eaefcc;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+`;

@@ -10,12 +10,12 @@
       "id": "5b8c",
       "title": "점심먹기",
       "content": "점메추",
-      "isDone": false
+      "isDone": true
     },
     {
-      "id": "304c",
-      "title": "저녁먹기",
-      "content": "저메추",
+      "id": "baa5",
+      "title": "운동하기",
+      "content": "몸짱이 될테야",
       "isDone": false
     }
   ]
