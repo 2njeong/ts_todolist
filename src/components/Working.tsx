@@ -1,15 +1,17 @@
-import { ReactNode, Suspense } from "react";
-import { useGetTodolist } from "../customhook";
+import { ReactNode } from "react";
+import { useAppSelector } from "../reduxHooks";
 
 const Working = (): ReactNode => {
-  const { data: todolist } = useGetTodolist();
+  const todolist = useAppSelector((state) => state.todolistSlice);
+  console.log(todolist);
 
   return (
-    <Suspense fallback={<div>로딩중..</div>}>
-      {todolist?.map((todo) => (
-        <div key={todo.id}>{todo.title}</div>
+    <>
+      <h1>Working</h1>
+      {todolist?.map((todo, idx) => (
+        <div key={idx}>{todo.title}</div>
       ))}
-    </Suspense>
+    </>
   );
 };
 

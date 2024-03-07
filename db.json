@@ -1,9 +1,15 @@
 {
   "todolist": [
     {
-      "id": 0,
+      "id": "0",
       "title": "운동하기",
       "content": "몸짱이 될테야",
+      "isDone": false
+    },
+    {
+      "id": "b99f",
+      "title": "점심먹기",
+      "content": "점메추",
       "isDone": false
     }
   ]
