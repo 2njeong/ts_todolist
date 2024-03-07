@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Todo } from "../api";
+import { Todo } from "../queryFns";
 import { useDeleteTodo, useEditTodo } from "../customhook";
 import { useAppSelector } from "../reduxHooks";
 

@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { useAddTodo, useInput } from "../customhook";
-import { Todo } from "../api";
+import { Todo } from "../queryFns";
 import styled from "styled-components";
 
 const MakeTodo = () => {

@@ -3,7 +3,13 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { Todo, addTodos, changeDoneTodo, deleteTodo, fetchTodos } from "./api";
+import {
+  Todo,
+  addTodos,
+  changeDoneTodo,
+  deleteTodo,
+  fetchTodos,
+} from "./queryFns";
 import { ChangeEvent, useState } from "react";
 
 export const useGetTodolist = (): {

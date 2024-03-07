@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Todo } from "../../api";
+import { Todo } from "../../queryFns";
 
 const initialState: Todo[] = [];
 

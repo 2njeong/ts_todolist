@@ -31,10 +31,15 @@ export const addTodos: MutationFunction<Todo, Todo> = async (
 export const changeDoneTodo: MutationFunction<Todo, Todo> = async (
   todo: Todo
 ): Promise<Todo> => {
-  const { data } = await api.patch(`${QUERYKEY_TODOLIST}/${todo.id}`, {
-    ...todo,
-    isDone: !todo.isDone,
-  });
+  const changeTodo = (todo: Todo, fields: Partial<Todo>): Todo => {
+    return { ...todo, ...fields };
+  };
+  const changedTodo = changeTodo(todo, { isDone: !todo.isDone });
+
+  const { data } = await api.patch(
+    `${QUERYKEY_TODOLIST}/${todo.id}`,
+    changedTodo
+  );
   return data;
 };
 
