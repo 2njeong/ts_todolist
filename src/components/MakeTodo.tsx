@@ -8,7 +8,12 @@ const MakeTodo = () => {
   const [content, contentHandler, clearContent] = useInput();
   const { mutate: mutateToAdd } = useAddTodo();
 
-  const newTodo = new Todo(undefined, title, content, false);
+  // const newTodo = new Todo(undefined, title, content, false);
+  const newTodo: Omit<Todo, "id"> = {
+    title,
+    content,
+    isDone: false,
+  };
 
   const addHandler = () => {
     mutateToAdd(newTodo);

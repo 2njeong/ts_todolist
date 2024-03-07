@@ -3,7 +3,7 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 export class Todo {
   constructor(
-    public id: string | undefined,
+    public id: string,
     public title: string,
     public content: string,
     public isDone: boolean
@@ -21,9 +21,10 @@ export const fetchTodos = async (): Promise<Todo[]> => {
   return data;
 };
 
-export const addTodos: MutationFunction<Todo, Todo> = async (
-  newTodo: Todo
-): Promise<Todo> => {
+export const addTodos: MutationFunction<
+  Todo,
+  { title: string; content: string; isDone: boolean }
+> = async (newTodo): Promise<Todo> => {
   const { data } = await api.post(QUERYKEY_TODOLIST, newTodo);
   return data;
 };
@@ -35,7 +36,6 @@ export const changeDoneTodo: MutationFunction<Todo, Todo> = async (
     return { ...todo, ...fields };
   };
   const changedTodo = changeTodo(todo, { isDone: !todo.isDone });
-
   const { data } = await api.patch(
     `${QUERYKEY_TODOLIST}/${todo.id}`,
     changedTodo
