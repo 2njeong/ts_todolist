@@ -1,16 +1,10 @@
-import { ReactNode } from "react";
-import { useAppSelector } from "../reduxHooks";
+import Todolist from "./Todolist";
 
-const Working = (): ReactNode => {
-  const todolist = useAppSelector((state) => state.todolistSlice);
-  console.log(todolist);
-
+const Working = () => {
   return (
     <>
-      <h1>Working</h1>
-      {todolist?.map((todo, idx) => (
-        <div key={idx}>{todo.title}</div>
-      ))}
+      <h2>Working</h2>
+      <Todolist isDone={false} />
     </>
   );
 };
