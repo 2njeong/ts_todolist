@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Done from "./components/Done";
+import Working from "./components/Working";
+import { useGetTodolist } from "./customhook";
+import { ReactNode, Suspense, useEffect } from "react";
+import { getTodolist } from "./reduxStore/modules/todolistSlice";
+import { useAppDispatch } from "./reduxHooks";
+import MakeTodo from "./components/MakeTodo";
+import styled from "styled-components";
 
-function App() {
-  const [count, setCount] = useState(0)
+function App(): ReactNode {
+  const dispatch = useAppDispatch();
+  const { data: todolist } = useGetTodolist();
+
+  useEffect(() => {
+    if (todolist) {
+      dispatch(getTodolist(todolist));
+    }
+  }, [dispatch, todolist]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Suspense fallback={<div>로딩중..</div>}>
+        <h1>ㅇㅈ이의 할 일</h1>
+        <MakeTodo />
+        <ListDiv>
+          <Working />
+          <Done />
+        </ListDiv>
+      </Suspense>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+const ListDiv = styled.div`
+  background-color: #eaefcc;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+`;
